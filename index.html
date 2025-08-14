@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Contact Form</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Canvas for the 3D background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main container for the form -->
+    <main class="relative min-h-screen w-full flex items-center justify-center p-4">
+        <div id="contact-wrapper" class="w-full max-w-lg transition-opacity duration-500">
+            <!-- Form Container with Glassmorphism -->
+            <div class="form-container rounded-2xl shadow-2xl p-6 md:p-10">
+                <h1 class="text-3xl md:text-4xl font-bold text-center mb-2">Contact Us</h1>
+                <p class="text-center text-gray-400 mb-8">
+We’d love to hear from you! Whether you have a query, suggestion, or just want to say hello — get in touch.</p>
+
+                <form id="contact-form" novalidate>
+                    <div class="space-y-6">
+                        <!-- Name Input -->
+                        <div class="input-group">
+                            <input type="text" id="name" name="name" placeholder=" " class="input-field w-full px-4 py-3 rounded-lg peer">
+                            <label for="name" class="input-label">Full Name</label>
+                            <div id="name-error" class="error-message"></div>
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" placeholder=" " class="input-field w-full px-4 py-3 rounded-lg peer">
+                            <label for="email" class="input-label">Email Address</label>
+                            <div id="email-error" class="error-message"></div>
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div class="input-group">
+                            <textarea id="message" name="message" rows="4" placeholder=" " class="input-field w-full px-4 py-3 rounded-lg peer resize-none"></textarea>
+                            <label for="message" class="input-label">Your Message</label>
+                            <div id="message-error" class="error-message"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Message Container -->
+        <div id="success-message" class="hidden absolute w-full max-w-lg text-center p-10 opacity-0 transform scale-95">
+             <div class="form-container rounded-2xl shadow-2xl p-6 md:p-10">
+                <svg class="w-16 h-16 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h2 class="text-3xl font-bold mt-4">Thank You!</h2>
+                <p class="text-gray-300 mt-2">Your message has been received. We'll be in touch soon.</p>
+             </div>
+        </div>
+    </main>
+
+    <!-- three.js for 3D background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
